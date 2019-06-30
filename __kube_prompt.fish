@@ -49,9 +49,9 @@ end
 
 function __kube_prompt
   if /bin/test -z "$__kube_ps_enabled"; or /bin/test $__kube_ps_enabled -ne 1
-    return
+    echo -n " "
+  else
+    __kube_ps_update_cache
+    echo -n -s " (⎈ $__kube_ps_context|$__kube_ps_namespace)"
   end
-
-  __kube_ps_update_cache
-  echo -n -s " (⎈ $__kube_ps_context|$__kube_ps_namespace)"
 end
